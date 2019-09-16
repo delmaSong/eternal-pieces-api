@@ -1,5 +1,5 @@
 from django.contrib import admin
-from join_api.models import join_tattist
+from join_api.models import Join_tattist
 
 # Register your models here.
-admin.site.register(join_tattist)
+admin.site.register(Join_tattist)
