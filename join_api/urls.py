@@ -7,10 +7,15 @@ from join_api.views import JoinViewSet
 from join_api import views
 
 router = routers.DefaultRouter()
-router.register('join_api', JoinViewSet, basename='join_api') #prefix = join_api, viewset = MovieViewSet
+router.register('join_api', JoinViewSet) #prefix = join_api, viewset = MovieViewSet
+
+post_list = JoinViewSet.as_view({
+    'post' : 'create',
+    'get' : 'list',
+})
 
 urlpatterns = [
-    path(r'^admin/', admin.site.urls),
-    path('aaab/',include(router.urls)),
+    path(r'',include(router.urls)),
+    path('aaa/', post_list, name="post_list"),
     path('hello-view/', views.JoinApiView.as_view()),
 ]

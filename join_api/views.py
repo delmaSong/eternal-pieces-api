@@ -8,8 +8,24 @@ from .models import Join_tattist
 
 # Create your views here.
 class JoinViewSet(viewsets.ModelViewSet):
-    qeuryset = Join_tattist.objects.all()
+    queryset = Join_tattist.objects.all()
     serializer_class = JoinSerializer
+
+    def perform_create(self, serializer):
+        serializer.save()
+
+    def post(self, request):
+        serializer = self.serializer_class(data=requeset.data)
+
+        if serializer.is_valid():
+            id = serializer.validated_data.get('tatt_id')
+            message = f'Good works with {id}'
+            return Response({'message' : message})
+        else:
+            return Response(
+                serializer.error,
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
 class JoinApiView(APIView):
 
