@@ -19,5 +19,6 @@ from join_api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('join_api.urls'))
+    path('api/', include('join_api.urls')),
+    path('api/', include('login_api.urls'))
 ]
