@@ -9,7 +9,7 @@ class Join_tattist(models.Model):
     tatt_time = models.CharField(max_length=200)    #타티스트 작업 가능 시간
     tatt_date = models.CharField(max_length=200)    #타티스트 작업 가능 요일
     tatt_profile = models.CharField(max_length=1000) #타티스트 프로필 사진
-    tatt_id = models.ForeignKey(User,on_delete=models.CASCADE)       #타티스트 아이디
+    tatt_id = models.ForeignKey(User ,on_delete=models.CASCADE)       #타티스트 아이디
 
     # def __str__(self):
     #     return self.tatt_id
