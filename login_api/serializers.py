@@ -6,4 +6,3 @@ class UserLoginSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('user_id', 'user_pw', 'role_tatt')
- 

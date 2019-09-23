@@ -27,6 +27,7 @@ class JoinViewSet(viewsets.ModelViewSet):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
+
 class JoinApiView(APIView):
 
     def get(self, request, format=None):
