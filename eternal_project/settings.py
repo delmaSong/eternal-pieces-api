@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import datetime
 #import pymysql
 
 #mysql과 장고 연동
@@ -50,9 +51,34 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'login_api',
     'join_api',
+
 ]
 
 SITE_ID = 1
+
+#JWT위한 세팅
+#
+# REST_USE_JWT = True
+#
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': (
+#         'rest_framework.permissions.IsAuthenticated',
+#     ),
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+#         'rest_framework.authentication.SessionAuthentication',
+#         'rest_framework.authentication.BasicAuthentication',
+#     ),
+# }
+#
+# JWT_AUTH = {
+#     'JWT_SECRET_KEY': SECRET_KEY,
+#     'JWT_ALGORITHM': 'HS256',
+#     'JWT_ALLOW_REFRESH': True,
+#     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
+#     'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=28),
+# }
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -136,4 +162,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-REST_USE_JWT = True
+#미디어 파일 업로드 위한 세팅
+MEDIA_URL = '/media/'                               #각 media파일에 대한 url 고정값 설정 가능 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')        #실제 파일이 저장될 루트 경로

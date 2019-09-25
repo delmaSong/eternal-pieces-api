@@ -16,11 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from join_api import views
+from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token, refresh_jwt_token
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('join_api.urls')),
     path('api/', include('login_api.urls')),
     path('rest-auth/', include('rest_auth.urls')),
-    path('rest_auth/registration/', include('rest_auth.registration.urls'))
+    path('rest-auth/registration/', include('rest_auth.registration.urls')),
+    path('api/token/', obtain_jwt_token),   #jwt토큰 발행시 사용
+    path('api/token/verify/', verify_jwt_token),    #jwt 토큰 유효한지 검증할 때 사용
+    path('api/token/refresh/', refresh_jwt_token),  #jwt 토큰 갱신할 때 사용
 ]
