@@ -1,8 +1,8 @@
 from rest_framework import serializers
 from rest_framework.parsers import JSONParser
 
-
 from join_api.models import Join_tattist
+
 
 class JoinSerializer(serializers.ModelSerializer):
     class Meta:

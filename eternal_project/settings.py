@@ -80,6 +80,17 @@ SITE_ID = 1
 # }
 
 
+
+#Setting the Parsers
+REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser',
+        'rest_framework.parsers.FileUploadParser',
+    ]
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -163,5 +174,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 #미디어 파일 업로드 위한 세팅
-MEDIA_URL = '/media/'                               #각 media파일에 대한 url 고정값 설정 가능 
+MEDIA_URL = '/media/'                               #각 media파일에 대한 url 고정값 설정 가능
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')        #실제 파일이 저장될 루트 경로
+
+DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880
