@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'login_api',
     'join_api',
+    'design',
 
 ]
 
