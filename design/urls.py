@@ -1,6 +1,6 @@
 from django.urls import path, include
 from design import views
-
 urlpatterns = [
-    path(r'upload-design/',views.DesignList.as_view(), name='DesignList' ),
+    path(r'',views.DesignCreate.as_view(), name='DesignList' ),
+    path(r'<str:pk>/', views.DesignDetail.as_view(), name='detail'),
 ]
