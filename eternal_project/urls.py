@@ -22,7 +22,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('join_api.urls')),
+    path('api/join_api/', include('join_api.urls')),
     path('api/', include('login_api.urls')),
     path('api/upload-design/', include('design.urls')),
     path('rest-auth/', include('rest_auth.urls')),

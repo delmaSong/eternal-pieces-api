@@ -1,4 +1,5 @@
 
+from django.http import Http404
 from rest_framework import status, permissions
 from rest_framework import mixins, generics
 from rest_framework.decorators import api_view
@@ -24,6 +25,15 @@ class JoinList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericA
 
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+
+    def get_queryset(self):
+        """타티스트 아이디로 필터링"""
+        queryset = Join_tattist.objects.all()
+        tatt_id = self.request.query_params.get('tatt_id', '')
+        print(tatt_id)
+        if tatt_id:
+            queryset = queryset.filter(tatt_id__exact=tatt_id)
+        return queryset
 
 class UserDetail(APIView):
 
