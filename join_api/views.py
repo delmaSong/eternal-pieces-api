@@ -7,6 +7,8 @@ from rest_framework.parsers import FileUploadParser
 from rest_framework.parsers import MultiPartParser
 from rest_framework.parsers import FormParser
 from rest_framework.parsers import JSONParser
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 from .serializers import JoinSerializer
 from .models import Join_tattist
@@ -22,3 +24,17 @@ class JoinList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericA
 
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+
+class UserDetail(APIView):
+
+    def get_object(self, pk):
+        try:
+            return Join_tattist.objects.get(pk=pk)
+        except Join_tattist.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk):
+        """특정 타티스트 조회 /join_api/{pk}"""
+        queryset = self.get_object(pk)
+        serializer = JoinSerializer(queryset)
+        return Response(serializer.data)
