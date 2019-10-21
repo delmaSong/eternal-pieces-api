@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'login_api',
     'join_api',
     'design',
+    'booking',
 
 ]
 
