@@ -17,3 +17,19 @@ class BookingCreate(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Gen
     def post(self, request, *args, **kwargs):
         """예약 create"""
         return self.create(request, *args, **kwargs)
+
+    def get_queryset(self):
+        """타티스트 아이디로 필터링"""
+        queryset = Booking.objects.all()
+        book_tatt = self.request.query_params.get('book_tatt', '')
+        if book_tatt:
+            queryset = queryset.filter(book_tatt__exact=book_tatt)
+        return queryset
+
+    def get_booker(self):
+        """예약자 아이디로 필터링"""
+        queryset = Booking.objects.all()
+        booker = self.request.query_params.get('booker', '')
+        if booker:
+            queryset = queryset.filter(booker__exact=booker)
+        return queryset

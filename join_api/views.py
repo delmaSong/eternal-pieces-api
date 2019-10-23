@@ -30,7 +30,6 @@ class JoinList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericA
         """타티스트 아이디로 필터링"""
         queryset = Join_tattist.objects.all()
         tatt_id = self.request.query_params.get('tatt_id', '')
-        print(tatt_id)
         if tatt_id:
             queryset = queryset.filter(tatt_id__exact=tatt_id)
         return queryset
@@ -48,3 +47,12 @@ class UserDetail(APIView):
         queryset = self.get_object(pk)
         serializer = JoinSerializer(queryset)
         return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        """특정 타티스트 정보 수정 /join_api/{pk}"""
+        queryset = self.get_object(pk)
+        serializer = JoinSerializer(queryset, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
