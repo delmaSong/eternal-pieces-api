@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'join_api',
     'design',
     'booking',
+    'works',
 
 ]
 
