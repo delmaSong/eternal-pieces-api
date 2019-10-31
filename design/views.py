@@ -38,8 +38,11 @@ class DesignCreate(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Gene
         """design_style filtering"""
         queryset = Design.objects.all()
         design_style = self.request.query_params.get('design_style', '')
+        tatt_id = self.request.query_params.get('tatt_id', '')
         if design_style:
             queryset = queryset.filter(design_style__exact=design_style)
+        elif tatt_id:
+            queryset = queryset.filter(tatt_id__exact=tatt_id)
         return queryset
 
 
