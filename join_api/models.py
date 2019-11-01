@@ -11,6 +11,6 @@ class Join_tattist(models.Model):
     tatt_date = models.CharField(max_length=200)    #타티스트 작업 가능 요일
     tatt_profile = models.ImageField(upload_to="profiles") #타티스트 프로필 사진
     tatt_id = models.ForeignKey(User ,on_delete=models.CASCADE, db_column = 'tatt_id')       #타티스트 아이디
-
+    back_img = models.ImageField(upload_to="backgrounds", null=True)   #타티스트 페이지 배경 이미지 
     # def __str__(self):
     #     return self.tatt_id
