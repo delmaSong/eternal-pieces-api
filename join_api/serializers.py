@@ -7,4 +7,4 @@ from join_api.models import Join_tattist
 class JoinSerializer(serializers.ModelSerializer):
     class Meta:
         model = Join_tattist #모델 설정
-        fields = ('id','tatt_time', 'tatt_id', 'tatt_date', 'tatt_work', 'tatt_addr', 'tatt_intro', 'tatt_profile')  #필드 설정
+        fields = '__all__'  #필드 설정

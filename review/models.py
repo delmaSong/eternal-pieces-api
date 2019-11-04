@@ -5,6 +5,7 @@ from design.models import Design
 #review table
 class Review(models.Model):
     rv_writer = models.CharField(max_length=100)    #작성자
+    rv_title = models.CharField(max_length=50)      #제목
     rv_contents = models.CharField(max_length=500)  #내용
     rv_date = models.DateField(auto_now=True)   #작성시간
     rv_photo = models.ImageField(upload_to="review", null=True)    #리뷰 이미지
