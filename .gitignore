@@ -138,3 +138,6 @@ static/
 
 #image files
 media/
+
+#settings file
+eternal_project/settings.py
