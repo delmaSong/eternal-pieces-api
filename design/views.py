@@ -1,6 +1,6 @@
 from django.http import Http404
 from rest_framework import status, permissions
-from rest_framework import mixins, generics, viewsets
+from rest_framework import mixins, generics
 from rest_framework.decorators import api_view
 from rest_framework.decorators import parser_classes
 from rest_framework.parsers import FileUploadParser
@@ -68,7 +68,6 @@ class DesignDetail(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        # print(serializer)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 

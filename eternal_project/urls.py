@@ -28,6 +28,7 @@ urlpatterns = [
     path('api/booking/', include('booking.urls')),
     path('api/works/', include('works.urls')),
     path('api/review/', include('review.urls')),
+    path('api/likes/', include('likes.urls')),
     path('rest-auth/', include('rest_auth.urls')),
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
     path('api/token/', obtain_jwt_token),   #jwt토큰 발행시 사용

@@ -43,7 +43,7 @@ class ReviewDetail(APIView):
     def put(self, request, pk, format=None):
         """특정 리뷰 수정 /review/{pk}"""
         queryset = self.get_object(pk)
-        serializer = ReviewSerializer(queryset, data=request.data)
+        serializer = ReviewSerializer(queryset, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
